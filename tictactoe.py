@@ -1,39 +1,14 @@
+import time
 board = {
     1: " ", 2: " ", 3: " ",
     4: " ", 5: " ", 6: " ",
     7: " ", 8: " ", 9: " "
     }
-def printBoard():
-    global board
-    print(" ",board[1] + "|" + " " + board[2] + " " + "|" + board[3])
-    print("---+---+---")
-    print(" ",board[4] + "|" + " " + board[5] + " " + "|" + board[6])
-    print("---+---+---")
-    print(" ",board[7] + "|" + " " + board[8] + " " + "|" + board[9])
+def typewrite(str):
+    for x in str:
+        time.sleep(0.05,)
+        print(x,end="")
 
-
-def player_x():
-    global board
-    while True:
-        option_x = int(input("What field would you like to choose?"))
-        if board[option_x] == "O":
-            print("NOT VALID")
-        else:
-            board[option_x] = "X"
-            printBoard()
-            break
-
-def player_o():
-    global board
-    while True:
-        option_o = int(input("What field would you like to choose?"))
-        if board[option_o] == "X":
-            print("NOT VALID")
-        else:
-            board[option_o] = "O"
-            printBoard()
-            break
-        
 def winner():
     global board
     #The first 3 check if player X has won on a row
@@ -74,21 +49,69 @@ def winner():
         print("Player O has won!")
     elif board[3] and board[5] and board[7] == "O":
         print("Player O has won!")
-    else:
-        print("It was a draw!")
-    
 
+def printBoard():
+    global board
+    print(" ",board[1] + "|" + " " + board[2] + " " + "|" + board[3])
+    print("---+---+---")
+    print(" ",board[4] + "|" + " " + board[5] + " " + "|" + board[6])
+    print("---+---+---")
+    print(" ",board[7] + "|" + " " + board[8] + " " + "|" + board[9])
+
+
+def player_x():
+    global board
+    while True:
+        option_x = int(input("What field would you like to choose?"))
+        if board[option_x] == "O":
+            print("NOT VALID")
+        else:
+            board[option_x] = "X"
+            printBoard()
+            winner()
+            break
+
+def player_o():
+    global board
+    while True:
+        option_o = int(input("What field would you like to choose?"))
+        if board[option_o] == "X":
+            print("NOT VALID")
+        else:
+            board[option_o] = "O"
+            printBoard()
+            winner()
+            break
+
+def startup():
+    typewrite("Welcome to Tic tac toe in Python - By Luis Wettre\n\n")
+    typewrite("""The Rules are simple, there are 2 players that take turns on choosing a field.\n
+The first player to reach 3 off their charachter in a row (Horizontal, Diagonal or Vertical) wins the game
+if no one manages to do this, the game is a draw!\n\n
+You pick the square you want to play in py choosing a number between 1 - 9, the first row being 1 - 3, second row 4 - 6 and third row 7 - 9\n\n""")
+    
+def rounds():
+    player_x()
+    winner()
+    player_o()
+    player_x()
+    winner()
+    player_o()
+    player_x()
+    winner()
+    player_o()
+    player_x()
+    winner()
+    player_o()
+    winner()
+    player_x()
+
+
+startup()
 printBoard()
-player_x()
-player_o()
-player_x()
-player_o()
-player_x()
-player_o()
-player_x()
-player_o()
-player_x()
-winner()
+rounds()
+
+
 
 
 
