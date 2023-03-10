@@ -16,21 +16,39 @@ second_row = [board[4],board[5],board[6]]
 third_row = [board[7],board[8],board[9]]
 
 first_collumn = [board[1],board[4],board[7]]
-second = [board[2],board[5],board[8]]
+second_collumn = [board[2],board[5],board[8]]
 third_collumn = [board[3],board[6],board[9]]
 
 first_diagonal = [board[1],board[5],board[9]]
 second_diagonal = [board[3],board[5],board[7]]
 
 #WIP win checker
-def checkRow(first_row):
+def checkPlayerX(first_row,second_row,third_row):
     element = "X"
-    check = True
+
+    #All the rows are set to true, if not all elements in a row are X the rows set to false
+    check_first_row = True
+    check_second_row = True
+    check_third_row = True
 
     for item in first_row:
         if element != item:
-            check = False
+            check_first_row = False
             break
+
+    for item in second_row:
+        if element != item:
+            check_second_row = False
+            break
+    
+    for item in third_row:
+        if element != item:
+            check_third_row = False
+            break
+
+    if check_first_row or check_second_row or check_third_row == True:
+        print("Congratuations Player X you won!")
+        quit()
 
 #The typewrite functions doesnt serve a real purpose its purely cosmetic
 def typewrite(str):
@@ -82,3 +100,11 @@ You pick the square you want to play in py choosing a number between 1 - 9, the 
 #Here i call all functions to start the game
 startup()
 printBoard()
+playerX()
+checkPlayerX()
+playerO()
+playerX()
+checkPlayerX()
+playerO()
+playerX()
+checkPlayerX()
