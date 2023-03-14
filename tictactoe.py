@@ -25,6 +25,9 @@ second_diagonal = [board[3],board[5],board[7]]
 #WIP win checker
 def checkPlayerX(first_row,second_row,third_row):
     element = "X"
+    first_row = [board[1],board[2],board[3]]
+    second_row = [board[4],board[5],board[6]]
+    third_row = [board[7],board[8],board[9]]
 
     #All the rows are set to true, if not all elements in a row are X the rows set to false
     check_first_row = True
@@ -52,11 +55,15 @@ def checkPlayerX(first_row,second_row,third_row):
 
 def checkPlayerO(first_row,second_row,third_row):
     element = "O"
+    first_row = [board[1],board[2],board[3]]
+    second_row = [board[4],board[5],board[6]]
+    third_row = [board[7],board[8],board[9]]
 
     #All the rows are set to true, if not all elements in a row are O the rows set to false
     check_first_row = True
     check_second_row = True
     check_third_row = True
+    
 
     for item in first_row:
         if element != item:
@@ -100,6 +107,7 @@ def playerX():
         if option in AvailableOptions:
             AvailableOptions.remove(option)
             board[option] = "X"
+
             printBoard()
             checkPlayerX(first_row,second_row,third_row)
             break
