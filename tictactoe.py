@@ -93,31 +93,35 @@ def printBoard():
 
 
 def playerX():
-    global AvailableOptions
-    print(AvailableOptions)
-    option = int(input("What field would you like to play in?\n"))
-    if option in AvailableOptions:
-        AvailableOptions.remove(option)
-        board[option] = "X"
-        printBoard()
-        checkPlayerX(first_row,second_row,third_row)
-    else:
-        print("NOT AVAILABLE")
+    while True:
+        global AvailableOptions
+        print(AvailableOptions)
+        option = int(input("What field would you like to play in?\n"))
+        if option in AvailableOptions:
+            AvailableOptions.remove(option)
+            board[option] = "X"
+            printBoard()
+            checkPlayerX(first_row,second_row,third_row)
+            break
+        else:
+            print("NOT AVAILABLE")
 
 
 def playerO():
-    global AvailableOptions
-    print(AvailableOptions)
-    option = int(input("What field would you like to play in?\n"))
-    if option in AvailableOptions:
-        AvailableOptions.remove(option)
-        board[option] = "O"
-        printBoard()
-        checkPlayerO(first_row,second_row,third_row)
+    while True:
+        global AvailableOptions
+        print(AvailableOptions)
+        option = int(input("What field would you like to play in?\n"))
+        if option in AvailableOptions:
+            AvailableOptions.remove(option)
+            board[option] = "O"
+            printBoard()
+            checkPlayerO(first_row,second_row,third_row)
+            break
 
-    else:
-        print("NOT AVAILABLE")
-  
+        else:
+            print("NOT AVAILABLE")
+    
 #Just a small startup welcome menu/info screen
 def startup():
     typewrite("Welcome to Tic tac toe in Python - By Luis Wettre\n\n")
