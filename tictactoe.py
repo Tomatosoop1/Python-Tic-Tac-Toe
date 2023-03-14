@@ -23,16 +23,34 @@ first_diagonal = [board[1],board[5],board[9]]
 second_diagonal = [board[3],board[5],board[7]]
 
 #WIP win checker
-def checkPlayerX(first_row,second_row,third_row):
+def checkPlayerX(first_row,second_row,third_row,first_collumn,second_collumn,third_collumn,first_diagonal,second_diagonal):
     element = "X"
+
     first_row = [board[1],board[2],board[3]]
     second_row = [board[4],board[5],board[6]]
     third_row = [board[7],board[8],board[9]]
+    
+    first_collumn = [board[1],board[4],board[7]]
+    second_collumn = [board[2],board[5],board[8]]
+    third_collumn = [board[3],board[6],board[9]]
+
+    first_diagonal = [board[1],board[5],board[9]]
+    second_diagonal = [board[3],board[5],board[7]]
+        
 
     #All the rows are set to true, if not all elements in a row are X the rows set to false
     check_first_row = True
     check_second_row = True
     check_third_row = True
+
+    
+    #All the collumns are set to true, if not all elements in a collumn are X the collumns set to false
+    check_first_collumn = True
+    check_second_collumn = True
+    check_third_collumn = True
+
+    check_first_diagonal = True
+    check_second_diagonal = True
 
     for item in first_row:
         if element != item:
@@ -48,22 +66,110 @@ def checkPlayerX(first_row,second_row,third_row):
         if element != item:
             check_third_row = False
             break
+    
+    for item in first_collumn:
+        if element != item:
+            check_first_collumn = False
+            break
 
-    if check_first_row or check_second_row or check_third_row == True:
+    for item in second_collumn:
+        if element != item:
+            check_second_collumn = False
+            break 
+
+    for item in third_collumn:
+        if element != item:
+            check_third_collumn = False
+            break 
+    
+    for item in first_diagonal:
+        if element != item:
+            check_first_diagonal = False
+            break 
+    
+    for item in second_diagonal:
+        if element != item:
+            check_second_diagonal = False
+            break 
+
+
+    if check_first_row or check_second_row or check_third_row or check_first_collumn or check_second_collumn or check_third_collumn or check_first_diagonal or check_second_diagonal == True:
         print("Congratuations Player X you won!")
         quit()
 
-def checkPlayerO(first_row,second_row,third_row):
+def checkPlayerO(first_row,second_row,third_row,first_collumn,second_collumn,third_collumn,first_diagonal,second_diagonal):
     element = "O"
+
     first_row = [board[1],board[2],board[3]]
     second_row = [board[4],board[5],board[6]]
     third_row = [board[7],board[8],board[9]]
+    
+    first_collumn = [board[1],board[4],board[7]]
+    second_collumn = [board[2],board[5],board[8]]
+    third_collumn = [board[3],board[6],board[9]]
 
-    #All the rows are set to true, if not all elements in a row are O the rows set to false
+    first_diagonal = [board[1],board[5],board[9]]
+    second_diagonal = [board[3],board[5],board[7]]
+        
+
+    #All the rows are set to true, if not all elements in a row are X the rows set to false
     check_first_row = True
     check_second_row = True
     check_third_row = True
+
     
+    #All the collumns are set to true, if not all elements in a collumn are X the collumns set to false
+    check_first_collumn = True
+    check_second_collumn = True
+    check_third_collumn = True
+
+    check_first_diagonal = True
+    check_second_diagonal = True
+
+    for item in first_row:
+        if element != item:
+            check_first_row = False
+            break
+
+    for item in second_row:
+        if element != item:
+            check_second_row = False
+            break
+    
+    for item in third_row:
+        if element != item:
+            check_third_row = False
+            break
+    
+    for item in first_collumn:
+        if element != item:
+            check_first_collumn = False
+            break
+
+    for item in second_collumn:
+        if element != item:
+            check_second_collumn = False
+            break 
+
+    for item in third_collumn:
+        if element != item:
+            check_third_collumn = False
+            break 
+    
+    for item in first_diagonal:
+        if element != item:
+            check_first_diagonal = False
+            break 
+    
+    for item in second_diagonal:
+        if element != item:
+            check_second_diagonal = False
+            break 
+
+
+    if check_first_row or check_second_row or check_third_row or check_first_collumn or check_second_collumn or check_third_collumn or check_first_diagonal or check_second_diagonal == True:
+        print("Congratuations Player O you won!")
+        quit()
 
     for item in first_row:
         if element != item:
@@ -109,7 +215,7 @@ def playerX():
             board[option] = "X"
 
             printBoard()
-            checkPlayerX(first_row,second_row,third_row)
+            checkPlayerX(first_row,second_row,third_row,first_collumn,second_collumn,third_collumn,first_diagonal,second_diagonal)
             break
         else:
             print("NOT AVAILABLE")
@@ -124,7 +230,7 @@ def playerO():
             AvailableOptions.remove(option)
             board[option] = "O"
             printBoard()
-            checkPlayerO(first_row,second_row,third_row)
+            checkPlayerO(first_row,second_row,third_row,first_collumn,second_collumn,third_collumn,first_diagonal,second_diagonal)
             break
 
         else:
