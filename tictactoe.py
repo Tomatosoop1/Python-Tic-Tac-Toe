@@ -1,5 +1,7 @@
 import time
+import os
 
+os.system('cls')
 #List used later in the code for checking if moves are availabel
 AvailableOptions = [1,2,3,4,5,6,7,8,9]
 
@@ -213,7 +215,7 @@ def playerX():
         if option in AvailableOptions:
             AvailableOptions.remove(option)
             board[option] = "X"
-
+            os.system('cls')
             printBoard()
             checkPlayerX(first_row,second_row,third_row,first_collumn,second_collumn,third_collumn,first_diagonal,second_diagonal)
             break
@@ -229,6 +231,7 @@ def playerO():
         if option in AvailableOptions:
             AvailableOptions.remove(option)
             board[option] = "O"
+            os.system('cls')
             printBoard()
             checkPlayerO(first_row,second_row,third_row,first_collumn,second_collumn,third_collumn,first_diagonal,second_diagonal)
             break
