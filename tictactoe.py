@@ -208,8 +208,13 @@ def Player():
                     printBoard()
                     checkPlayerX(first_row,second_row,third_row,first_collumn,second_collumn,third_collumn,first_diagonal,second_diagonal)
                     CurrentPlayer = "O"
+                    gameEnd = len(AvailableOptions)
+
+                    if gameEnd == 0:
+                        print("It's a draw!")
+                        quit()
                     break
-                else:
+                else:   
                     print("NOT AVAILABLE")  
         elif CurrentPlayer == "O":
              while True:
@@ -247,3 +252,4 @@ printBoard()
 Player()
 
 
+#end = AvailableOptions(len) if end == 0 print("It's a draw!") quit()
