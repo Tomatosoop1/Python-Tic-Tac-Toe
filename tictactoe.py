@@ -195,7 +195,12 @@ def Player():
         if CurrentPlayer == "X":
             while True:
                 print(AvailableOptions)
-                option = int(input("What field would you like to play in?\n"))
+                try:
+                    option = int(input("What field would you like to play in?\n"))
+                except ValueError:
+                    print("Not and int!")
+                    continue
+
                 if option in AvailableOptions:
                     AvailableOptions.remove(option)
                     board[option] = "X"
@@ -209,7 +214,12 @@ def Player():
         elif CurrentPlayer == "O":
              while True:
                 print(AvailableOptions)
-                option = int(input("What field would you like to play in?\n"))
+                try:
+                    option = int(input("What field would you like to play in?\n"))
+                except ValueError:
+                    print("Not and int!")
+                    continue
+                
                 if option in AvailableOptions:
                     AvailableOptions.remove(option)
                     board[option] = "O"
@@ -231,9 +241,6 @@ if no one manages to do this, the game is a draw!\n
 You pick the square you want to play in py choosing a number between 1 - 9, the first row being 1 - 3, second row 4 - 6 and third row 7 - 9\n\n""")
     
 #Here i call all functions to start the game
-
- 
-
 
 startup()
 printBoard()
