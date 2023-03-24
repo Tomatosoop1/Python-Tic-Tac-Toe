@@ -15,12 +15,14 @@ def typewrite(str):
 def rematch():
     global AvailableOptions
     global board
+    global score
     AvailableOptions = [1,2,3,4,5,6,7,8,9]
     board = {
     1: " ", 2: " ", 3: " ",
     4: " ", 5: " ", 6: " ",
     7: " ", 8: " ", 9: " "
     }
+    print("The score is\nPlayerO:",score["PlayerO"],"\nPlayerX:",score["PlayerX"])
     user_input = input("Do you want to play again y/n ? \n")
     while True:
         if user_input == "y":
@@ -59,6 +61,7 @@ second_diagonal = [board[3],board[5],board[7]]
 
 def checkPlayerX(first_row,second_row,third_row,first_collumn,second_collumn,third_collumn,first_diagonal,second_diagonal):
     element = "X"
+    global score
 
     first_row = [board[1],board[2],board[3]]
     second_row = [board[4],board[5],board[6]]
@@ -124,10 +127,12 @@ def checkPlayerX(first_row,second_row,third_row,first_collumn,second_collumn,thi
 
 
     if check_first_row or check_second_row or check_third_row or check_first_collumn or check_second_collumn or check_third_collumn or check_first_diagonal or check_second_diagonal == True:
+        score["PlayerX"] += 1
         print("Congratuations Player X you won!")
         rematch()
 
 def checkPlayerO(first_row,second_row,third_row,first_collumn,second_collumn,third_collumn,first_diagonal,second_diagonal):
+    global score 
     element = "O"
 
     first_row = [board[1],board[2],board[3]]
@@ -193,7 +198,9 @@ def checkPlayerO(first_row,second_row,third_row,first_collumn,second_collumn,thi
             break 
 
     if check_first_row or check_second_row or check_third_row or check_first_collumn or check_second_collumn or check_third_collumn or check_first_diagonal or check_second_diagonal == True:
+        score["PlayerO"] += 1
         print("Congratuations Player O you won!")
+
         rematch()
 
 def printBoard():
