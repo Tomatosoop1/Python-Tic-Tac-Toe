@@ -3,6 +3,9 @@ import os
 
 CurrentPlayer = "X"
 AvailableOptions = [1,2,3,4,5,6,7,8,9]
+score = {"PlayerO": 0,
+         "PlayerX": 0,}
+
 #The typewrite functions doesnt serve a real purpose its purely cosmetic
 def typewrite(str):
     for x in str:
@@ -259,9 +262,6 @@ if no one manages to do this, the game is a draw!\n
 You pick the square you want to play in py choosing a number between 1 - 9, the first row being 1 - 3, second row 4 - 6 and third row 7 - 9\n\n""")
     
 #Here i call all functions to start the game
-
-
-
 
 startup()
 printBoard()    
