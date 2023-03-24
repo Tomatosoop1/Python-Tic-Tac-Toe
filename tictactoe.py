@@ -2,17 +2,37 @@ import time
 import os
 
 CurrentPlayer = "X"
-
+AvailableOptions = [1,2,3,4,5,6,7,8,9]
 #The typewrite functions doesnt serve a real purpose its purely cosmetic
 def typewrite(str):
     for x in str:
         time.sleep(0.022)
         print(x,end="")
 
-os.system('cls')
+def rematch():
+    global AvailableOptions
+    global board
+    AvailableOptions = [1,2,3,4,5,6,7,8,9]
+    board = {
+    1: " ", 2: " ", 3: " ",
+    4: " ", 5: " ", 6: " ",
+    7: " ", 8: " ", 9: " "
+    }
+    user_input = input("Do you want to play again y/n ? \n")
+    while True:
+        if user_input == "y":
+            os.system('cls')
+            printBoard()    
+            Player()
+            break
+        elif user_input == "n":
+            quit()
+        else:
+            print("Not a valid answer")
+            rematch()
+            break
 
-#List used later in the code for checking if moves are availabel
-AvailableOptions = [1,2,3,4,5,6,7,8,9]
+os.system('cls')
 
 #This is a dictionary with currently nothing in it, later this is where the players moves are stored
 board = {
@@ -102,7 +122,7 @@ def checkPlayerX(first_row,second_row,third_row,first_collumn,second_collumn,thi
 
     if check_first_row or check_second_row or check_third_row or check_first_collumn or check_second_collumn or check_third_collumn or check_first_diagonal or check_second_diagonal == True:
         print("Congratuations Player X you won!")
-        quit()
+        rematch()
 
 def checkPlayerO(first_row,second_row,third_row,first_collumn,second_collumn,third_collumn,first_diagonal,second_diagonal):
     element = "O"
@@ -171,7 +191,7 @@ def checkPlayerO(first_row,second_row,third_row,first_collumn,second_collumn,thi
 
     if check_first_row or check_second_row or check_third_row or check_first_collumn or check_second_collumn or check_third_collumn or check_first_diagonal or check_second_diagonal == True:
         print("Congratuations Player O you won!")
-        quit()
+        rematch()
 
 def printBoard():
     global board
@@ -240,6 +260,10 @@ You pick the square you want to play in py choosing a number between 1 - 9, the 
     
 #Here i call all functions to start the game
 
+
+
+
 startup()
-printBoard()
+printBoard()    
 Player()
+
